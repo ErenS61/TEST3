@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <title>Carte des Stations par Département</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="image/favicon.ico" sizes="32x32" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon-180x180.png" />
+    <link href="https://site-assets.fontawesome.com/releases/v7.0.1/css/all.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <div>
+      <h1 id="pageTitle">🗺️ Carte Stations par Département</h1>
+
+      <div id="departmentSelectorContainer">
+        <select id="departmentSelector">
+          <option value="">Choisir un département...</option>
+        </select>
+      </div>
+
+      <div id="stationsCount" class="stations-count"></div>
+
+      <div id="mapContainer">
+        <div id="map"></div>
+      </div>
+    </div>
+
+    <!-- Bouton flottant de rafraîchissement -->
+    <div class="floating-buttons">
+      <button class="refresh-button" onclick="refreshPage()">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+    </div>
+
+    <script>
+      const departementsScript = document.createElement("script");
+      departementsScript.src = "departements.js?v=" + new Date().getTime();
+      departementsScript.onload = function () {
+        const mainScript = document.createElement("script");
+        mainScript.src = "script.js";
+        document.body.appendChild(mainScript);
+      };
+      document.body.appendChild(departementsScript);
+    </script>
+  </body>
+</html>

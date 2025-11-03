@@ -1,0 +1,298 @@
+/* ==================== STYLES DE BASE ==================== */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Gotham", sans-serif;
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("./fonts/Gotham-Book.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("./fonts/Gotham-Bold.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    background: #1a1a1a;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+/* ==================== EN-TÊTE ET TITRE ==================== */
+h1 {
+    color: #00ffcc;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #00ffcc55;
+}
+
+/* ==================== SÉLECTEUR DÉPARTEMENT ==================== */
+#departmentSelectorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+#departmentSelector {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    width: 300px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    appearance: none;
+}
+
+#departmentSelector.default-selection {
+    border: 2px solid #ff3333;
+    box-shadow: 0 0 10px #ff000055;
+    animation: blink-selector 1.5s infinite;
+}
+
+@keyframes blink-selector {
+    0%,
+    100% {
+        border-color: #ff3333;
+        box-shadow: 0 0 10px #ff000055;
+    }
+    50% {
+        border-color: #ff9999;
+        box-shadow: 0 0 15px #ff000099;
+    }
+}
+
+#departmentSelector:not(.default-selection) {
+    border: 1px solid #555;
+    box-shadow: none;
+    animation: none;
+}
+
+/* ==================== COMPTEUR DE STATIONS ==================== */
+.stations-count {
+    font-size: 1.2rem;
+    color: #00ffcc;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+/* ==================== CONTENEUR CARTE ==================== */
+#mapContainer {
+    margin: 0 auto;
+    max-width: 1200px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+#map {
+    width: 100%;
+    height: 67vh;
+    border-radius: 15px;
+}
+
+/* ==================== BOUTONS FLOTTANTS ==================== */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.floating-buttons button {
+    background-color: rgba(128, 128, 128, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
+    height: 54px;
+    width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.floating-buttons button:hover {
+    background-color: rgba(128, 128, 128, 0.8);
+    transform: scale(1.1);
+}
+
+.refresh-button {
+    background-color: rgba(128, 0, 255, 0.5) !important;
+}
+
+.refresh-button:hover {
+    background-color: rgba(128, 0, 255, 0.8) !important;
+}
+
+/* ==================== STYLES POUR LA CARTE ==================== */
+.custom-map-marker {
+    background: transparent !important;
+    border: none !important;
+}
+
+.leaflet-popup-content {
+    font-family: "Gotham", sans-serif;
+    margin: 12px;
+    white-space: normal !important;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    max-width: 300px;
+    line-height: 1.4;
+}
+
+.leaflet-popup-content-wrapper {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.leaflet-popup-tip {
+    background: #1a1a1a;
+}
+
+.popup-container {
+    font-family: "Gotham", sans-serif;
+    font-size: 14px;
+    width: 280px !important;
+}
+
+.popup-header {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    text-align: center;
+}
+
+.popup-header b {
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.popup-info {
+    text-align: left;
+}
+
+.info-line {
+    margin: 8px 0;
+    padding: 4px 0;
+    border-bottom: 1px solid #333;
+}
+
+.info-line:last-child {
+    border-bottom: none;
+}
+
+.info-line strong {
+    color: #000000;
+}
+
+/* ==================== BOUTON DE LOCALISATION ==================== */
+.leaflet-locate-control {
+    background: white;
+    border-radius: 4px;
+}
+
+.leaflet-locate-control a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.leaflet-locate-control a:hover {
+    background-color: #f0f0f0;
+}
+
+/* ==================== MESSAGES SYSTÈME ==================== */
+.system-message {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 255, 204, 0.9);
+    color: #1a1a1a;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    transition: opacity 0.5s;
+}
+
+.system-message.error-message {
+    background-color: rgba(255, 173, 173, 0.95);
+    color: #5a1a1a;
+    box-shadow: 0 2px 12px rgba(255, 173, 173, 0.4);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #departmentSelector {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    #map {
+        height: 60vh;
+    }
+
+    .stations-count {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #map {
+        height: 62vh;
+    }
+
+    .popup-container {
+        width: 250px !important;
+    }
+}

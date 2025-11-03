@@ -1,0 +1,23 @@
+{
+    "name": "TEST3",
+    "short_name": "TEST3",
+    "start_url": "./?utm_source=pwa",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": ".",
+    "theme_color": "#1a1a1a",
+    "background_color": "#1a1a1a",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "image/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
